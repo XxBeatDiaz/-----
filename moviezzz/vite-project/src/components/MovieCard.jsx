@@ -13,7 +13,7 @@ export default function MovieCard({ id, title, poster_path }) {
             cursor: "pointer",
             "&:hover": {
               backgroundColor: "#313b3fff",
-              transform: "rotate(-1deg) scale(1.02)",
+              transform: "rotate(-0.4deg) scale(1.02)",
             },
             transition: "all 0.2s ease-in-out",
             height: 450,
