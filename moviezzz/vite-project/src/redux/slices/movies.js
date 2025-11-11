@@ -31,7 +31,6 @@ const moviesSlice = createSlice({
             })
             .addCase(fetchMoviesByFilters.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.total = action.payload.total;
                 moviesAdapter.upsertMany(state, action.payload);
             })
             .addCase(fetchMoviesByFilters.rejected, (state, action) => {

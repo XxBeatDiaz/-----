@@ -1,12 +1,12 @@
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useMovies } from "../hooks/useMovie.js";
-import ListMovieCards from "../components/ListMovieCards.jsx";
 import { removeAll } from "../redux/slices/search.js";
+import ListMovieCards from "../components/ListMovieCards.jsx";
 
 export default function AllMoviesPage() {
   const dispatch = useDispatch();
-
+  
   const {
     movies: moviesByIds,
     status: moviesStatus,

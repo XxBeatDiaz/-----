@@ -6,6 +6,8 @@ import { fetchMoviesByFilters } from '../thunks/moviesThunk.js';
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
+    status: 'idle',
+    error: null,
     ids: [],
   },
   reducers: {
