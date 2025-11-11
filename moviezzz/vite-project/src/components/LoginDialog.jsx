@@ -1,13 +1,19 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Login from "./Login";
 
-export default function FormDialog() {
+import Login from "./Login";
+import { fetchUser } from "../redux/thunks/loginThunk";
+
+export default function LoginDialog() {
+  const dispatch = useDispatch();
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -23,9 +29,9 @@ export default function FormDialog() {
 
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries(formData.entries());
-    const { username, email } = formJson;
+    const { username, password } = formJson;
 
-    dispatch(loginUser({ username, email }));
+    dispatch(fetchUser({ username, password }));
 
     handleClose();
   };

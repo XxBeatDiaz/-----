@@ -1,27 +1,32 @@
 [
-    {
-        "id": 1,
-        "username": "john_doe",
-        "password": "1"
-    },
-    {
-        "id": 2,
-        "username": "alice_smith",
-        "password": "2"
-    },
-    {
-        "id": 3,
-        "username": "michael_89",
-        "password": "3"
-    },
-    {
-        "id": 4,
-        "username": "sara_levi",
-        "password": "4"
-    },
-    {
-        "id": 5,
-        "username": "david_cohen",
-        "password": "5"
-    }
+  {
+    "id": 1,
+    "username": "john",
+    "password": "1",
+    "moviesIds": [3, 7, 12, 25, 1, 18, 22, 5, 14, 29]
+  },
+  {
+    "id": 2,
+    "username": "alice",
+    "password": "2",
+    "moviesIds": [1, 5, 14, 22, 30, 6, 19, 11, 8]
+  },
+  {
+    "id": 3,
+    "username": "michael",
+    "password": "3",
+    "moviesIds": [2, 8, 11, 19, 21, 28, 4, 7, 16, 27]
+  },
+  {
+    "id": 4,
+    "username": "sara",
+    "password": "4",
+    "moviesIds": [6, 9, 13, 18, 2, 24, 3, 10, 12]
+  },
+  {
+    "id": 5,
+    "username": "david",
+    "password": "5",
+    "moviesIds": [4, 7, 15, 20, 26, 29, 5, 1, 12, 8, 18]
+  }
 ]

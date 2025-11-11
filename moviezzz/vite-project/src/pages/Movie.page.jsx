@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
+
 import { VideoPlayer } from "../components/VideoPlayer";
 import { moviesSelectors } from "../redux/slices/movies";
 
