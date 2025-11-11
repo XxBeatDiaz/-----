@@ -1,9 +1,11 @@
-import { Avatar } from "@mui/material";
 import { Link } from "react-router";
+import { Avatar } from "@mui/material";
 import SearchBar from "./SearchBar";
+import FormDialog from "../components/LoginDialog";
 import "./TopNav.css";
 
-export default function TopNav({ logo, links, avatar, LoginLink }) {
+export default function TopNav({ logo, links, avatar }) {
+
   return (
     <div className="top-nav">
       <img src={logo} alt="Logo" width="70" height="60" />
@@ -19,9 +21,7 @@ export default function TopNav({ logo, links, avatar, LoginLink }) {
       </div>
       <div className="user-section">
         <Avatar src={avatar} sx={{ alignSelf: "center" }} />
-        <Link className="link" to={LoginLink.url}>
-          {LoginLink.label}
-        </Link>
+          <FormDialog />
       </div>
     </div>
   );
