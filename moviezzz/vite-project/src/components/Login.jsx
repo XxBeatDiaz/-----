@@ -1,5 +1,4 @@
 import { TextField } from "@mui/material";
-import Button from "@mui/material/Button"; 
 
 export default function Login({ onSubmit, formId }) {
   return (
@@ -9,7 +8,7 @@ export default function Login({ onSubmit, formId }) {
           autoFocus
           required
           margin="dense"
-          id="name"
+          id="username"
           name="username"
           label="Username"
           type="text"
@@ -20,10 +19,10 @@ export default function Login({ onSubmit, formId }) {
           autoFocus
           required
           margin="dense"
-          id="name"
-          name="email"
-          label="Email Address"
-          type="email"
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
           fullWidth
           variant="standard"
         />

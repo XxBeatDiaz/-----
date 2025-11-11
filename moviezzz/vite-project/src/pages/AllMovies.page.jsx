@@ -1,6 +1,8 @@
-import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useMovies } from "../hooks/useMovie.js";
+
+import { Button } from "@mui/material";
+
 import { removeAll } from "../redux/slices/search.js";
 import ListMovieCards from "../components/ListMovieCards.jsx";
 
