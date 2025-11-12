@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getMovies, getMoviesByFilters } from "../../api/moviesAPI.js";
+import { getMovieById, getMovies, getMoviesByFilters } from "../../api/moviesAPI.js";
 
 export const fetchMovies = createAsyncThunk(
     "movies/fetchAll", 
@@ -8,6 +8,14 @@ export const fetchMovies = createAsyncThunk(
         return response;
     }
 );
+
+export const fetchOneMovie = createAsyncThunk(
+    "movies/fetchOneMovie",
+    async ({movieId}) => {
+        const respons = await getMovieById(movieId)
+        return respons;
+    }
+)
 
 export const fetchMoviesByFilters = createAsyncThunk(
     "movies/fetchByFilters",

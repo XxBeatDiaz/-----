@@ -10,8 +10,8 @@ export default function Layout({ children }) {
     <>
       <TopNav logo={logo} links={links} avatar={avatar} loginDialog={<LoginDialog />} />
 
-      <div style={{ backgroundColor: "rgb(50, 49, 49)", height: "100px" }}></div>
-      <Box sx={{ backgroundColor: "rgb(50, 49, 49);" }}>{children}</Box>
+      <div style={{ backgroundColor: "#292929", height: "100px" }}></div>
+      <Box sx={{ backgroundColor: "#222222ff" }}>{children}</Box>
     </>
   );
 }

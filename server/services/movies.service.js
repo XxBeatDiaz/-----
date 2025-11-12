@@ -26,3 +26,8 @@ export function getMoviesByFilters({ name = '', year = '', genre = '' }) {
   
   return filteredMovies;
 }
+
+export function getMovieById(movieId) {
+  const movie = movies.filter((m) => m.id.toString() === movieId.toString());
+  return movie;
+}
