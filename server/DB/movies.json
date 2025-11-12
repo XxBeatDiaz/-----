@@ -49,7 +49,7 @@
     "title": "Pulp Fiction",
     "synopsis": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     "director": "Quentin Tarantino",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/pulp_fiction_poster.jpg",
     "year": 1994,
     "genre_ids": [7, 3]
   },
@@ -58,7 +58,7 @@
     "title": "The Shawshank Redemption",
     "synopsis": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
     "director": "Frank Darabont",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/the_shawshank_redemption_poster.jpg",
     "year": 1994,
     "genre_ids": [3]
   },
@@ -67,7 +67,7 @@
     "title": "Forrest Gump",
     "synopsis": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
     "director": "Robert Zemeckis",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/forest_gump_poster.jpg",
     "year": 1994,
     "genre_ids": [3, 6]
   },
@@ -76,7 +76,7 @@
     "title": "The Green Mile",
     "synopsis": "The lives of death row guards at a Southern prison and their encounter with an enigmatic convict, John Coffey, who possesses supernatural powers.",
     "director": "Frank Darabont",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/the_green_mile_poster.jpg",
     "year": 1999,
     "genre_ids": [3, 13, 15]
   },
@@ -85,7 +85,7 @@
     "title": "The Dark Knight",
     "synopsis": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
     "director": "Christopher Nolan",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/the_dark_knight_poster.jpg",
     "year": 2008,
     "genre_ids": [1, 8, 7, 11]
   },

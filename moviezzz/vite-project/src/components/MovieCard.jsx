@@ -4,7 +4,7 @@ import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 export default function MovieCard({ id, title, poster_path }) {
   return (
     <Link to={`/movie/${id}`}>
-      <Box sx={{ width: 200, m: 1 }}>
+      <Box sx={{ width: 190 }}>
         <Card
           sx={{
             backgroundColor: "#534b5fff",
@@ -16,14 +16,14 @@ export default function MovieCard({ id, title, poster_path }) {
               transform: "rotate(-0.4deg) scale(1.02)",
             },
             transition: "all 0.2s ease-in-out",
-            height: 450,
+            height: 350,
             display: "flex",
             flexDirection: "column",
           }}
         >
           <CardMedia
             component="img"
-            height="300"
+            height="270"
             image={poster_path}
             alt={title}
           />
@@ -35,7 +35,7 @@ export default function MovieCard({ id, title, poster_path }) {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h6" fontWeight="bold">
+            <Typography variant="h7" fontWeight="bold">
               {title}
             </Typography>
           </CardContent>

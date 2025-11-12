@@ -2,17 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { fetchMoviesByFilters } from "../redux/thunks/moviesThunk.js";
+
 import { Stack, TextField, Button } from "@mui/material";
 
 export default function SearchBar() {
-  const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [title, setTitle] = useState("");
+
   const handleSearch = () => {
-    if (query.trim() === "") return;
-    dispatch(fetchMoviesByFilters({ name: query, year: "", genres: "" }));
+    if (title.trim() === "") return;
+    dispatch(fetchMoviesByFilters({ name: title, year: "", genres: "" }));
     navigate(`/movies`);
+    setTitle("");
   };
 
   const handleKeyDown = (e) => {
@@ -24,8 +27,8 @@ export default function SearchBar() {
   return (
     <Stack direction="row" spacing={1} onKeyDown={handleKeyDown}>
       <TextField
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         placeholder="Search movies..."
         size="small"
         fullWidth
