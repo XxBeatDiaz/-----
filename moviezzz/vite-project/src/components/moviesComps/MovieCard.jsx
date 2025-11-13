@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 
+
 export default function MovieCard({ id, title, poster_path }) {
   return (
     <Link to={`/movie/${id}`}>

@@ -1,6 +1,7 @@
 import movies from "../DB/movies.json" with { type: "json" };
 import { filterItemsByChars } from "../DB/utils.js";
 
+
 export function getAllMovies() {
   return movies;
 }
@@ -25,4 +26,9 @@ export function getMoviesByFilters({ name = '', year = '', genre = '' }) {
   }
   
   return filteredMovies;
+}
+
+export function getMovieById(movieId) {
+  const movie = movies.filter((m) => m.id.toString() === movieId.toString());
+  return movie;
 }

@@ -1,8 +1,13 @@
-import { getAllMovies, getMoviesByFilters } from "../services/movies.service.js";
+import { getAllMovies, getMoviesByFilters, getMovieById } from "../services/movies.service.js";
+
 
 export function getMovies(req, res) {
-  const movies = getAllMovies();
-  res.json(movies);
+  try {
+    const movies = getAllMovies();
+    res.json(movies);
+  } catch (error) {
+    res.status(500).json({ error: 'Faild to fetch movies' })
+  }
 }
 
 export function getMoviesByFiltersCtrl(req, res) {
@@ -17,13 +22,16 @@ export function getMoviesByFiltersCtrl(req, res) {
   }
 }
 
-export function getMoviesById(req, res) {
-  const { movies } = getAllMovies();
-  const movieId = req.params.id;
-  const movie = movies.find(m => String(m.id) === String(movieId));
-  if (movie) {
-    res.json(movie);
-  } else {
-    res.status(404).json({ message: 'Movie not found' });
+export function getOneMovieById(req, res) {
+  try {
+    const { id } = req.params;
+    const movie = getMovieById(id);
+    if (movie) {
+      res.json(movie);
+    } else {
+      res.status(404).json({ message: 'Movie not found' });
+    }
+  } catch (error) {
+    res.status(500).json({error: `Faild to fetch movie: ${id} `})
   }
 }

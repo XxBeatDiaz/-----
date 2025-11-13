@@ -1,5 +1,6 @@
 import { createSlice, createEntityAdapter, createSelector } from '@reduxjs/toolkit';
-import { fetchMovies, fetchMoviesByFilters } from '../thunks/moviesThunk.js';
+import { fetchMovies, fetchMoviesByFilters, fetchOneMovie } from '../thunks/moviesThunk.js';
+
 
 const moviesAdapter = createEntityAdapter();
 const initialState = moviesAdapter.getInitialState({
@@ -22,6 +23,18 @@ const moviesSlice = createSlice({
                 moviesAdapter.upsertMany(state, action.payload);
             })
             .addCase(fetchMovies.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
+
+            .addCase(fetchOneMovie.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchOneMovie.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                moviesAdapter.upsertOne(state, action.payload);
+            })
+            .addCase(fetchOneMovie.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })

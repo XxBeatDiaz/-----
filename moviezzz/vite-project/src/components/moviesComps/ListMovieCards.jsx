@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import MovieCard from "./MovieCard.jsx";
 
+
 export default function ListMovieCards({ movies }) {
   return (
     <Grid container spacing={2.7} justifyContent="center" alignItems="stretch">
