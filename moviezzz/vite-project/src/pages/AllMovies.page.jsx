@@ -1,9 +1,9 @@
+import { Box } from "@mui/material";
+
 import { useMovies } from "../hooks/useMovie.js";
 import ListMovieCards from "../components/moviesComps/ListMovieCards.jsx";
 
-
 export default function AllMoviesPage() {
-  
   const {
     movies: moviesByIds,
     status: moviesStatus,
@@ -19,8 +19,15 @@ export default function AllMoviesPage() {
   }
 
   return (
-    <div>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        py: 4,
+        px: "50px",
+        backgroundColor: "#313b3fff",
+      }}
+    >
       <ListMovieCards movies={moviesByIds} />
-    </div>
+    </Box>
   );
 }

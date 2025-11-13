@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import loginReducer from "./slices/login";
 import moviesReducer from "./slices/movies";
 import genresReducer from "./slices/genres";

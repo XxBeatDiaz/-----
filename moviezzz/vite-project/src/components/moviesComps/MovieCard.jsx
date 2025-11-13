@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 
 
@@ -8,7 +9,7 @@ export default function MovieCard({ id, title, poster_path }) {
       <Box sx={{ width: 190 }}>
         <Card
           sx={{
-            backgroundColor: "#534b5fff",
+            backgroundColor: "#5f4f4bff",
             color: "white",
             textAlign: "center",
             cursor: "pointer",

@@ -25,6 +25,9 @@ const loginSlice = createSlice({
     }
 });
 
+export function getMoviesIdsFromUser(state){
+    return state.users.user
+}
 export default loginSlice.reducer;
 
 
