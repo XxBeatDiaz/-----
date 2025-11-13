@@ -1,21 +1,24 @@
-import { useEffect } from "react";
 import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
-import { Box, Typography, Grid, Divider } from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 
 import { moviesSelectors } from "../redux/slices/movies";
-import { fetchOneMovie } from "../redux/thunks/moviesThunk.js"
+import { VideoPlayer } from "../components/moviesComps/VideoPlayer";
 
-import { VideoPlayer } from "../components/VideoPlayer";
 
 export default function MoviePage() {
-  const dispatch = useDispatch();
-
   const { id } = useParams();
-  // const  
-  
+
   const movie = useSelector((state) => moviesSelectors.selectById(state, id));
+
+  if (!movie) {
+    return (
+      <Typography sx={{ color: "white", textAlign: "center", mt: 5 }}>
+        Loading...
+      </Typography>
+    );
+  }
 
   return (
     <Box
@@ -37,27 +40,22 @@ export default function MoviePage() {
           alignItems: "center",
           maxWidth: "1200px",
           mt: 3,
+          backgroundColor: "#29272799",
           borderRadius: 3,
           overflow: "hidden",
-          boxShadow: "0 0 20px rgba(0,0,0,0.6)",
+          boxShadow: "0 0 20px #2e1d1d99",
           marginBottom: "20px",
         }}
       >
         <br />
-        {movie ? (
-          <VideoPlayer
-            src="/matrixTrailer.mp4"
-            isPlaying={true}
-            thumb={movie?.poster_path}
-          />
-        ) : (
-          <Typography sx={{ color: "white", textAlign: "center", mt: 5 }}>
-            Loading...
-          </Typography>
-        )}
+        <VideoPlayer
+          src="/matrixTrailer.mp4"
+          isPlaying={true}
+          thumb={movie?.poster_path}
+        />
 
         <Divider
-          sx={{ my: 4, width: "80%", bgcolor: "rgba(129, 128, 128, 0.25)" }}
+          sx={{ my: 4, width: "80%", bgcolor: "rgba(129, 128, 128, 0.36)" }}
         />
 
         <Box
@@ -76,12 +74,19 @@ export default function MoviePage() {
           <img
             src={movie.poster_path}
             alt="/matrix"
-            style={{ borderRadius: "20px", maxHeight: "350px", maxWidth: "300px" }}
+            style={{
+              borderRadius: "20px",
+              maxHeight: "350px",
+              maxWidth: "300px",
+            }}
           />
-          <h1 style={{ margin: "0px", borderBottom: "1px solid gray" }}>{movie.title}</h1>
-          <Typography sx={{}}>
-            {movie.synopsis}
-          </Typography>
+          <Box>
+            <h1 style={{ margin: "20px 0", paddingBottom: "20px", borderBottom: "1px solid gray" }}>
+              {movie.title}
+            </h1>
+            <Typography sx={{}}>{movie.synopsis}</Typography>
+          </Box>
+            
         </Box>
       </Box>
     </Box>

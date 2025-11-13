@@ -9,7 +9,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import Login from "./Login";
-import { fetchUser } from "../redux/thunks/loginThunk";
+import { fetchUser } from "../../redux/thunks/loginThunk";
 
 export default function LoginDialog() {
   const dispatch = useDispatch();

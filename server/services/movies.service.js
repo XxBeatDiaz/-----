@@ -1,6 +1,7 @@
 import movies from "../DB/movies.json" with { type: "json" };
 import { filterItemsByChars } from "../DB/utils.js";
 
+
 export function getAllMovies() {
   return movies;
 }

@@ -1,6 +1,7 @@
 import { createSlice, createEntityAdapter, createSelector } from '@reduxjs/toolkit';
 import { fetchMovies, fetchMoviesByFilters, fetchOneMovie } from '../thunks/moviesThunk.js';
 
+
 const moviesAdapter = createEntityAdapter();
 const initialState = moviesAdapter.getInitialState({
     status: 'idle',

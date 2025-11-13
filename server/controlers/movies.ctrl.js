@@ -1,5 +1,6 @@
 import { getAllMovies, getMoviesByFilters, getMovieById } from "../services/movies.service.js";
 
+
 export function getMovies(req, res) {
   try {
     const movies = getAllMovies();
