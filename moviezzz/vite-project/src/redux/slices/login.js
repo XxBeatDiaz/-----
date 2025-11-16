@@ -1,14 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
+
 import { fetchUser } from '../thunks/loginThunk';
 
 const loginSlice = createSlice({
-    name: 'users',
+    name: 'user',
     initialState: {
-        user: [],
+        user: null,
         status: "idle",
         error: null
     },
-    reducers: {},
+    reducers: {
+        logOut: (state) => {
+            state.user = null;
+            state.status = 'idle';
+            state.error = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchUser.pending, (state) => {
@@ -25,9 +32,19 @@ const loginSlice = createSlice({
     }
 });
 
-export function getMoviesIdsFromUser(state){
-    return state.users.user
-}
+export const getUser = (state) => state.login.user;
+
+export const getMoviesIdsFromUser = createSelector(
+    [getUser],
+    (user) => {
+        if (!user) return [];
+        console.log(user);
+
+        return user.moviesIds;
+    }
+);
+
+export const { logOut } = loginSlice.actions;
 export default loginSlice.reducer;
 
 

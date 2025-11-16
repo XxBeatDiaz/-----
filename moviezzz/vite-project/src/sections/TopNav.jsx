@@ -12,7 +12,7 @@ import {
 import SearchMovies from "./SearchMovies.jsx";
 import ResetSearchBtn from "../components/searchComps/ResetSearchBtn.jsx";
 
-export default function TopNav({ logo, links, avatar, loginDialog }) {
+export default function TopNav({ logo, links, avatar, loginSection }) {
 
   return (
     <AppBar
@@ -108,7 +108,7 @@ export default function TopNav({ logo, links, avatar, loginDialog }) {
 
         <Stack direction="row" alignItems="center" spacing={1.5}>
           <Avatar src={avatar} />
-          {loginDialog}
+          {loginSection}
         </Stack>
       </Toolbar>
     </AppBar>
