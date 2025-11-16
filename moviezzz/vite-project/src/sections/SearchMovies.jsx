@@ -15,5 +15,5 @@ export default function SearchMovies() {
     navigate(`/movies`);
   }
 
-  return <SearchBar onSearch={handleSearch} />;
+  return <SearchBar placeholder={"Search any movies..."} onSearch={handleSearch} />;
 }

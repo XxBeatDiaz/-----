@@ -4,12 +4,11 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { removeAll } from "../../redux/slices/search.js";
 
-export default function ResetSearchBtn({ isActive, onChange }) {
+export default function ResetFiltersBtn({ isActive, onClick }) {
   const dispatch = useDispatch();
 
   function handleResetFilter() {
     dispatch(removeAll());
-    onChange('')
   }
 
   return (
