@@ -1,4 +1,5 @@
 import { Link as RouterLink } from "react-router";
+
 import {
   AppBar,
   Toolbar,
@@ -10,10 +11,8 @@ import {
 } from "@mui/material";
 
 import SearchMovies from "./SearchMovies.jsx";
-import ResetSearchBtn from "../components/searchComps/ResetSearchBtn.jsx";
 
-export default function TopNav({ logo, links, avatar, loginDialog }) {
-
+export default function TopNav({ logo, links, avatar, loginSection }) {
   return (
     <AppBar
       position="sticky"
@@ -30,7 +29,6 @@ export default function TopNav({ logo, links, avatar, loginDialog }) {
           alignItems: "center",
           gap: 3,
           px: { xs: 2, md: 4 },
-
         }}
       >
         <Box
@@ -57,7 +55,11 @@ export default function TopNav({ logo, links, avatar, loginDialog }) {
           <Typography
             variant="h6"
             color="text.primary"
-            sx={{ display: { xs: "none", sm: "block" }, color: "#9e9393ec", fontWeight: 600 }}
+            sx={{
+              display: { xs: "none", sm: "block" },
+              color: "#9e9393ec",
+              fontWeight: 600,
+            }}
           >
             Moviez
             <Box component="span" sx={{ color: "#cb0202e9" }}>
@@ -79,12 +81,12 @@ export default function TopNav({ logo, links, avatar, loginDialog }) {
               component={RouterLink}
               to={link.url}
               underline="none"
-              color="#bcbcbcff" 
+              color="#bcbcbcff"
               sx={{
-                fontFamily: "sans-serif" ,
+                fontFamily: "sans-serif",
                 fontWeight: 500,
                 transition: "color 0.17s",
-                "&:hover": { color: "#e03838cc"  },
+                "&:hover": { color: "#e03838cc" },
               }}
             >
               {link.label}
@@ -102,13 +104,13 @@ export default function TopNav({ logo, links, avatar, loginDialog }) {
             mx: { xs: 1, md: 3 },
           }}
         >
+          
           <SearchMovies />
-          <ResetSearchBtn />
         </Stack>
 
         <Stack direction="row" alignItems="center" spacing={1.5}>
           <Avatar src={avatar} />
-          {loginDialog}
+          {loginSection}
         </Stack>
       </Toolbar>
     </AppBar>

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 
 import SearchBar from "../components/searchComps/SearchBar.jsx";
-import { fetchMoviesByFilters } from "../redux/thunks/moviesThunk.js";
+import { fetchMoviesByFilters } from "../redux/thunks/moviesThunks.js";
 
 
 export default function SearchMovies() {
@@ -15,5 +15,5 @@ export default function SearchMovies() {
     navigate(`/movies`);
   }
 
-  return <SearchBar onSearch={handleSearch} />;
+  return <SearchBar placeholder={"Search any movies..."} onSearch={handleSearch} />;
 }

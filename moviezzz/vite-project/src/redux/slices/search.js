@@ -1,5 +1,5 @@
 import {createSlice } from '@reduxjs/toolkit';
-import { fetchMoviesByFilters } from '../thunks/moviesThunk.js';
+import { fetchMoviesByFilters } from '../thunks/moviesThunks.js';
 
 
 

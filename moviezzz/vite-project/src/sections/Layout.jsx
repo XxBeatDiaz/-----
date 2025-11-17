@@ -1,18 +1,33 @@
-import { Box } from "@mui/material";
-import TopNav from "./TopNav";
+import { useSelector } from "react-redux";
 
+import { Box } from "@mui/material";
+
+import TopNav from "./TopNav";
 import LoginDialog from "../components/userComps/LoginDialog";
+import LogOut from "../components/userComps/LogOut";
+
+import { getUser } from "../redux/slices/user";
 import { logo, links } from "../globals";
 
-
 export default function Layout({ children }) {
-  const avatar = null;//לממש בהמשך
-  
+  const user = useSelector(getUser);
+  const avatar = null; //לממש בהמשך
+
+  const isLogedin = !!user;
+  let loginSection = <LoginDialog />;
+
+  if (isLogedin) {
+    loginSection = <LogOut/>;
+  }
+
   return (
     <>
-      <TopNav logo={logo} links={links} avatar={avatar} loginDialog={<LoginDialog />} />
-
-      {/* <div style={{ backgroundColor: "#292929", height: "100px" }}></div> */}
+      <TopNav
+        logo={logo}
+        links={links}
+        avatar={avatar}
+        loginSection={loginSection}
+      />
       <Box sx={{ backgroundColor: "#222222ff" }}>{children}</Box>
     </>
   );
