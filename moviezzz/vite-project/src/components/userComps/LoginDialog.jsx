@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import Login from "./Login";
-import { fetchUser } from "../../redux/thunks/loginThunk";
+import { fetchUser } from "../../redux/thunks/userThunks";
 
 const loginText = "To subscribe to this website, please enter your username and password here."
 

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import { useMovies } from "../hooks/useMovie.js";
+import { useSearchMovies } from "../hooks/useMovie.js";
 import ListMovieCards from "../components/moviesComps/ListMovieCards.jsx";
 
 export default function AllMoviesPage() {
@@ -8,7 +8,7 @@ export default function AllMoviesPage() {
     movies: moviesByIds,
     status: moviesStatus,
     error: moviesError,
-  } = useMovies();
+  } = useSearchMovies();
 
   if (moviesStatus === "loading") {
     return <div>Loading...</div>;

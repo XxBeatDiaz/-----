@@ -6,7 +6,7 @@ import TopNav from "./TopNav";
 import LoginDialog from "../components/userComps/LoginDialog";
 import LogOut from "../components/userComps/LogOut";
 
-import { getUser } from "../redux/slices/login";
+import { getUser } from "../redux/slices/user";
 import { logo, links } from "../globals";
 
 export default function Layout({ children }) {

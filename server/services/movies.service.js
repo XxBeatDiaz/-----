@@ -24,11 +24,15 @@ export function getMoviesByFilters({ name = '', year = '', genre = '' }) {
       movie.genre.toLowerCase().includes(genre.toLowerCase())
     );
   }
-  
+
   return filteredMovies;
 }
 
 export function getMovieById(movieId) {
-  const movie = movies.filter((m) => m.id.toString() === movieId.toString());
-  return movie;
+  return movies.find((m) => m.id.toString() === movieId.toString()) || null;
+}
+
+export function getMoviesByIds(moviesIds) {
+  const moviesByIds = movies.filter((m) => moviesIds.includes(m.id.toString()));
+  return moviesByIds;
 }

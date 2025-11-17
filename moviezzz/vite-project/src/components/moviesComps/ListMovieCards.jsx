@@ -3,8 +3,6 @@ import { Grid, Divider, Typography } from "@mui/material";
 import MovieCard from "./MovieCard.jsx";
 
 export default function ListMovieCards({ movies }) {
-  console.log(movies);
-
   return (
     <Grid
       container

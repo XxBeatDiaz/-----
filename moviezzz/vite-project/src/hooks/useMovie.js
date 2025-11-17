@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import { moviesSelectors, selectManyByIds } from "../redux/slices/movies.js";
 
-export function useMovies() {
+export function useSearchMovies() {
   const searchIds = useSelector((state) => state.search.ids);
   const allMovies = useSelector((state) => moviesSelectors.selectAll(state));
   const filteredMovies = useSelector((state) => selectManyByIds(state, searchIds));

@@ -1,8 +1,8 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 
-import { fetchUser } from '../thunks/loginThunk';
+import { fetchUser } from '../thunks/userThunks';
 
-const loginSlice = createSlice({
+const userSlice = createSlice({
     name: 'user',
     initialState: {
         user: null,
@@ -32,20 +32,19 @@ const loginSlice = createSlice({
     }
 });
 
-export const getUser = (state) => state.login.user;
+export const getUser = (state) => state.user.user;
 
 export const getMoviesIdsFromUser = createSelector(
     [getUser],
     (user) => {
         if (!user) return [];
-        console.log(user);
 
         return user.moviesIds;
     }
 );
 
-export const { logOut } = loginSlice.actions;
-export default loginSlice.reducer;
+export const { logOut } = userSlice.actions;
+export default userSlice.reducer;
 
 
 

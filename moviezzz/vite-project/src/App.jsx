@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "./redux/thunks/moviesThunk.js";
+
+import { fetchMovies } from "./redux/thunks/moviesThunks.js";
 import ConfigRoutes from "./routes/configRoutes";
 import Layout from "./sections/Layout";
-// import "./app.css";
 
 function App() {
   const dispatch = useDispatch();

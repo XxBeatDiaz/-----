@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Box, Typography, Divider } from "@mui/material";
 
-import { getMoviesIdsFromUser, getUser } from "../redux/slices/login";
+import { getMoviesIdsFromUser, getUser } from "../redux/slices/user.js";
 import { selectManyByIds } from "../redux/slices/movies";
+
+import { fetchManyMovies } from "../redux/thunks/moviesThunks.js";
 
 import ListMovieCards from "../components/moviesComps/ListMovieCards.jsx";
 import LoginDialog from "../components/userComps/LoginDialog.jsx";
@@ -13,9 +15,17 @@ import SearchBar from "../components/searchComps/SearchBar.jsx";
 import { filterItems } from "../api/utils.js";
 
 export default function MyFavorites() {
+  const dispatch = useDispatch();
   const user = useSelector(getUser);
+  const {status} = useSelector(state => state.user);
   const moviesIds = useSelector(getMoviesIdsFromUser);
   const moviesByIds = useSelector((state) => selectManyByIds(state, moviesIds));
+
+  useEffect(() => {
+    if (status === "succeeded") {
+      dispatch(fetchManyMovies(moviesIds));
+    }
+  },[dispatch, moviesIds, status])
 
   const [filteredMovies, setFilteredMovies] = useState(moviesByIds);
 

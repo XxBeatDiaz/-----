@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { Button } from '@mui/material';
 
-import { logOut } from '../../redux/slices/login';
+import { logOut } from '../../redux/slices/user';
 
 export default function LogOut() {
   const dispatch = useDispatch();
