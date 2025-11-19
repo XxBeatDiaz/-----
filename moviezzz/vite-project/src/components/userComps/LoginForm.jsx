@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-export default function Login({ onSubmit, formId }) {
+export default function LoginForm({ onSubmit, formId }) {
   return (
     <>
       <form onSubmit={onSubmit} id={formId}>

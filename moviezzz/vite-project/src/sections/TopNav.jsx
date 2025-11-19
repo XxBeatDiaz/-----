@@ -10,7 +10,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import SearchMovies from "./SearchMovies.jsx";
+import Filters from "../components/searchComps/Filters.jsx";
+import SearchControler from "../components/searchComps/SearchControler.jsx";
 
 export default function TopNav({ logo, links, avatar, loginSection }) {
   return (
@@ -69,6 +70,7 @@ export default function TopNav({ logo, links, avatar, loginSection }) {
         </Box>
 
         <Stack
+          width="40%"
           direction="row"
           spacing={3}
           sx={{
@@ -94,19 +96,7 @@ export default function TopNav({ logo, links, avatar, loginSection }) {
           ))}
         </Stack>
 
-        <Stack
-          direction="row"
-          alignItems="center"
-          spacing={1}
-          sx={{
-            flex: 1,
-            maxWidth: { xs: 200, sm: 300, md: 400 },
-            mx: { xs: 1, md: 3 },
-          }}
-        >
-          
-          <SearchMovies />
-        </Stack>
+        <SearchControler/>
 
         <Stack direction="row" alignItems="center" spacing={1.5}>
           <Avatar src={avatar} />

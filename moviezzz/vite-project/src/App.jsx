@@ -1,27 +1,38 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { fetchMovies } from "./redux/thunks/moviesThunks.js";
+import { clearAlert } from "./redux/slices/alert.js";
+
 import ConfigRoutes from "./routes/configRoutes";
 import Layout from "./sections/Layout";
+import CustomSnackbar from "./components/alertComps/SnackBar.jsx";
+import useOnStart from "./hooks/useOnStart.js";
 
 function App() {
   const dispatch = useDispatch();
-  const moviesStatus = useSelector((state) => state.movies.status);
 
-  useEffect(() => {
-    if (moviesStatus === "idle") {
-      dispatch(fetchMovies());
-    }
-  }, [dispatch, moviesStatus]);
+  useOnStart();
+
+  const { type, message } = useSelector((state) => state.alert);
+
+  function handleClearAlert() {
+    dispatch(clearAlert());
+  }
 
   return (
     <>
       <Layout>
         <ConfigRoutes />
+        {message && (
+          <CustomSnackbar
+            key={message}
+            type={type}
+            message={message}
+            onClose={handleClearAlert}
+          />
+        )}
       </Layout>
     </>
-  )
+  );
 }
-  
-export default App
+
+export default App;

@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 
-import SearchBar from "../components/searchComps/SearchBar.jsx";
-import { fetchMoviesByFilters } from "../redux/thunks/moviesThunks.js";
-import { setLastSearch } from "../redux/slices/search.js";
+import { Stack } from "@mui/material";
 
-export default function SearchMovies() {
-  const navigate = useNavigate();
+import { setLastSearch } from "../../redux/slices/search";
+import FiltersDrawer from "./FiltersDrawer";
+import SearchMovies from "../../sections/SearchMovies";
+
+export default function Filters() {
   const dispatch = useDispatch();
 
   const [titleFilter, setTitleFilter] = useState("");
   const [yearFilter, setYearFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("");
 
-  function handleSearch(title) {
-    if (title.trim() === "") return;
-    dispatch(setLastSearch({ name: title }));
-    dispatch(fetchMoviesByFilters({ name: title }));
-    navigate(`/movies`);
+  function handleFilters(title, year, genre) {
+    const searchFilters = { name: title, year: year, genre: genre };
+    
+    dispatch(setLastSearch(searchFilters));
+
+    setTitleFilter(title);
+    setYearFilter(year);
+    setGenreFilter(genre);
   }
 
   return (
@@ -34,9 +37,9 @@ export default function SearchMovies() {
     >
       <FiltersDrawer
         onClickApply={() => handleFilters(titleFilter, yearFilter, genreFilter)}
-        onClickReset={() => {}}
+        onClickReset={""}
       />
-      <SearchBar placeholder={"Search any movies..."} onSearch={handleSearch} />
+      <SearchMovies />
     </Stack>
   );
 }

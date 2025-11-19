@@ -10,10 +10,12 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-import Login from "./Login";
 import { fetchUser } from "../../redux/thunks/userThunks";
+import LoginForm from "./LoginForm";
+import { showAlert } from "../../redux/slices/alert";
 
-const loginText = "To subscribe to this website, please enter your username and password here."
+const loginDialogText =
+  "To subscribe to this website, please enter your username and password here.";
 
 export default function LoginDialog() {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ export default function LoginDialog() {
     setOpen(false);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.stopPropagation();
     event.preventDefault();
 
@@ -37,9 +39,27 @@ export default function LoginDialog() {
     const formJson = Object.fromEntries(formData.entries());
     const { username, password } = formJson;
 
-    dispatch(fetchUser({ username, password }));
+    if (!username || !password) {
+      dispatch(
+        showAlert({ type: "error", message: "Please fill in all fields!" })
+      );
+      return;
+    }
 
-    handleClose();
+    try {
+      await dispatch(fetchUser({ username, password })).unwrap();
+      dispatch(
+        showAlert({ type: "success", message: "Logged in successfully!" })
+      );
+      handleClose();
+    } catch (error) {
+      dispatch(
+        showAlert({
+          type: "error",
+          message: `Login failed! <${error.message}>`,
+        })
+      );
+    }
   };
 
   return (
@@ -52,15 +72,15 @@ export default function LoginDialog() {
 
         <DialogContent>
           <DialogContentText sx={{ marginLeft: "24px", marginTop: "16px" }}>
-            {loginText}
+            {loginDialogText}
           </DialogContentText>
 
-          <Login onSubmit={handleSubmit} formId={"subscription-form"} />
+          <LoginForm onSubmit={handleSubmit} formId={"subscription-form"} />
         </DialogContent>
 
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose} type="submit" form="subscription-form">
+          <Button type="submit" form="subscription-form">
             Login
           </Button>
         </DialogActions>
