@@ -25,7 +25,7 @@ export default function ListMovieCards({ movies }) {
           </Grid>
         ))
       ) : (
-        <Typography color="green">No result</Typography>
+        <Typography color="green">No results</Typography>
       )}
     </Grid>
   );

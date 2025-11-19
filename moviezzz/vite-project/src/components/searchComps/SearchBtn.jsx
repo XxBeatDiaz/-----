@@ -1,13 +1,14 @@
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function SearchBtn({onClick}) {
+export default function SearchBtn({isActive, onClick}) {
   return (
     <SearchIcon
       variant="outlined"
-      onClick={onClick}
+      onClick={isActive ? onClick: undefined}
       sx={{
         alignSelf: "center",
-        cursor: "pointer",
+        cursor: isActive ? "pointer" : "",
+        color: isActive ?'#e32828a9' : "#504d4de4",
       }}
     >
       Search

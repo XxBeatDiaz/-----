@@ -1,24 +1,23 @@
 import { useDispatch } from "react-redux";
 
-import CloseIcon from "@mui/icons-material/Close";
-
 import { removeAll } from "../../redux/slices/search.js";
+import { Button } from "@mui/material";
 
-export default function ResetFiltersBtn({ isActive, onClick }) {
+export default function ResetFiltersBtn({ onClick }) {
   const dispatch = useDispatch();
 
   function handleResetFilter() {
     dispatch(removeAll());
+    onClick();
   }
 
   return (
-    <CloseIcon
-      onClick={isActive ? handleResetFilter : undefined}
-      sx={{
-        alignSelf: "center",
-        cursor: isActive ? "pointer" : "",
-        color: isActive ? "#842e2ecb" : "#363434e4",
-      }}
-    />
+    <Button
+      variant="text"
+      color="error"
+      onClick={handleResetFilter}
+    >
+      Reset
+    </Button>
   );
 }
