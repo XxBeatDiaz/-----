@@ -1,6 +1,6 @@
-import { getMovies, getOneMovieById, getMoviesByFiltersCtrl, getManyMoviesByIds } from "../controlers/movies.ctrl.js";
 import express from 'express';
 
+import { getMovies, getOneMovieById, getMoviesByFiltersCtrl, getManyMoviesByIds } from "../controlers/movies.ctrl.js";
 
 const moviesRouter = express.Router();
 

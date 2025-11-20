@@ -6,11 +6,12 @@ import TopNav from "./TopNav";
 import LoginDialog from "../components/userComps/LoginDialog";
 import LogOut from "../components/userComps/LogOut";
 
-import { getUser } from "../redux/slices/user";
+import { selectUser } from "../redux/slices/user";
 import { logo, links } from "../globals";
 
 export default function Layout({ children }) {
-  const user = useSelector(getUser);
+  
+  const user = useSelector(selectUser);
   const avatar = null; //לממש בהמשך
 
   const isLogedin = !!user;

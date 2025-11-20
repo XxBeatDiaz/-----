@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import Filters from "../components/searchComps/Filters.jsx";
 import SearchControler from "../components/searchComps/SearchControler.jsx";
 
 export default function TopNav({ logo, links, avatar, loginSection }) {

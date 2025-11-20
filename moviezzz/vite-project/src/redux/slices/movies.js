@@ -2,7 +2,6 @@ import { createSlice, createEntityAdapter, createSelector, isPending, isFulfille
 
 import { fetchMovies, fetchMoviesByFilters, fetchOneMovie, fetchManyMovies } from '../thunks/moviesThunks.js';
 
-
 const moviesAdapter = createEntityAdapter();
 const initialState = moviesAdapter.getInitialState({
     status: 'idle',
@@ -47,18 +46,19 @@ const moviesSlice = createSlice({
             }
         );
 
-        
+
     }
 });
 
 export const moviesSelectors = moviesAdapter.getSelectors(state => state.movies);
 
-export const selectManyByIds = createSelector(
-    [
-        (state) => state.movies.entities,
-        (state, ids) => ids
-    ],
-    (entities, ids) => ids.map(id => entities[id]).filter(Boolean)
-);
+export const selectMoviesStatus = (state) => state.genres.status;
+export const selectMoviesError = (state) => state.genres.error;
+
+export const selectManyByIds = (ids) =>
+    createSelector(
+        [(state) => state.movies.entities],
+        (entities) => ids.map(id => entities[id]).filter(Boolean)
+    );
 
 export default moviesSlice.reducer;

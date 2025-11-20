@@ -21,7 +21,7 @@ const searchSlice = createSlice({
 
     setLastSearch: (state, action) => {
       const newFilters = action.payload;
-      state.lastSearch = {...state.lastSearch, ...newFilters};      
+      state.lastSearch = { ...state.lastSearch, ...newFilters };
     }
   },
 
@@ -43,7 +43,12 @@ const searchSlice = createSlice({
   },
 });
 
-export const getLastSearch = (state) => state.search;
+export const selectSearchIds = (state) => state.search.ids;
+export const selectSearchStatus = (state) => state.search.status;
+export const selectSearcherror = (state) => state.search.error;
+
+export const selectLastSearch = (state) => state.search.lastSearch;
 
 export const { removeAll, setLastSearch } = searchSlice.actions;
 export default searchSlice.reducer;
+  

@@ -10,9 +10,10 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-import { fetchUser } from "../../redux/thunks/userThunks";
 import LoginForm from "./LoginForm";
+
 import { showAlert } from "../../redux/slices/alert";
+import { fetchUser } from "../../redux/thunks/userThunks";
 
 const loginDialogText =
   "To subscribe to this website, please enter your username and password here.";

@@ -32,10 +32,12 @@ const userSlice = createSlice({
     }
 });
 
-export const getUser = (state) => state.user.user;
+export const selectUser = (state) => state.user.user;
+export const selectUserStatus = (state) => state.user.status;
+export const selectUserError = (state) => state.user.error;
 
-export const getMoviesIdsFromUser = createSelector(
-    [getUser],
+export const selectMoviesIdsFromUser = createSelector(
+    [selectUser],
     (user) => {
         if (!user) return [];
 

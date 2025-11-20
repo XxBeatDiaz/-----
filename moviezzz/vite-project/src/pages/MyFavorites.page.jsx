@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { Box, Typography, Divider } from "@mui/material";
 
-import { getMoviesIdsFromUser } from "../redux/slices/user.js";
+import {
+  selectMoviesIdsFromUser,
+  selectUserStatus,
+} from "../redux/slices/user.js";
 import { selectManyByIds } from "../redux/slices/movies";
 
 import ListMovieCards from "../components/moviesComps/ListMovieCards.jsx";
@@ -13,20 +16,26 @@ import SearchBar from "../components/searchComps/SearchBar.jsx";
 import { filterItems } from "../api/utils.js";
 
 export default function MyFavorites() {
-  const userStatus = useSelector(state => state.user.status);
-  const moviesIds = useSelector(getMoviesIdsFromUser);
-  const moviesByIds = useSelector((state) => selectManyByIds(state, moviesIds));
+  const userStatus = useSelector(selectUserStatus);
+  const moviesIds = useSelector(selectMoviesIdsFromUser);
+  // const moviesByIds = useSelector(selectManyByIds(moviesIds));
+
+  const selectMoviesByIds = useMemo(
+    () => selectManyByIds(moviesIds),
+    [moviesIds]
+  );
+  const moviesByIds = useSelector(selectMoviesByIds);
 
   const [filteredMovies, setFilteredMovies] = useState(moviesByIds);
+
+  useEffect(() => {
+    setFilteredMovies(moviesByIds);
+  }, [moviesByIds]);
 
   function handleSearch(query) {
     const newFilteredMovies = filterItems(moviesByIds, query);
     setFilteredMovies(newFilteredMovies);
   }
-
-  useEffect(() => {
-    setFilteredMovies(moviesByIds);
-  }, [moviesByIds]);
 
   return (
     <Box
@@ -39,13 +48,20 @@ export default function MyFavorites() {
     >
       <Divider
         textAlign="middle"
-        sx={{ margin: "20px 0", fontFamily: "sans-serif", fontWeight: "bold", color: "#5ad6208e", letterSpacing: "2px" }}
+        sx={{
+          margin: "20px 0",
+          fontFamily: "sans-serif",
+          fontWeight: "bold",
+          color: "#5ad6208e",
+          letterSpacing: "2px",
+        }}
       >
         Your - movies
       </Divider>
 
       <Box mb={3} justifyItems={"center"}>
         <SearchBar
+          id={"search-init"}
           placeholder={"Search any favorite movie..."}
           onChange={handleSearch}
           liveSearch={true}
@@ -53,7 +69,7 @@ export default function MyFavorites() {
       </Box>
 
       <ListMovieCards movies={filteredMovies} />
-      
+
       <Box>
         {userStatus === "succeeded" || (
           <>

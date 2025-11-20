@@ -1,18 +1,17 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "./SearchBar";
 import FiltersDrawer from "./FiltersDrawer";
 
-import { getLastSearch, setLastSearch } from "../../redux/slices/search";
+import { selectLastSearch, setLastSearch } from "../../redux/slices/search";
 import { fetchMoviesByFilters } from "../../redux/thunks/moviesThunks";
 
 export default function SearchControler() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const lastSearch = useSelector(getLastSearch);
+  const lastSearch = useSelector(selectLastSearch);
 
   function handleAllFilters(updatedFilters) {
     dispatch(setLastSearch(updatedFilters));
@@ -44,6 +43,7 @@ export default function SearchControler() {
         currentYear={2025}
       />
       <SearchBar
+        id={"searchFetch"}
         placeholder={"Search any movies..."}
         onChange={handleSearchBar}
       />

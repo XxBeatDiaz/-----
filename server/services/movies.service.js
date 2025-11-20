@@ -6,7 +6,10 @@ export function getAllMovies() {
   return movies;
 }
 
-export function getMoviesByFilters({ name = '', year = '', genre = '' }) {
+export function getMoviesByFilters(filters) {
+  const { name = '', year = '', genre = '' } = filters;
+  console.log(filters);
+  
   let filteredMovies = movies;
 
   if (name) {
@@ -24,6 +27,7 @@ export function getMoviesByFilters({ name = '', year = '', genre = '' }) {
       movie.genre.toLowerCase().includes(genre.toLowerCase())
     );
   }
+  
 
   return filteredMovies;
 }

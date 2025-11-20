@@ -6,6 +6,7 @@ import SearchBtn from "./SearchBtn";
 import ClearTextFieldBtn from "./ClearTextFieldBtn";
 
 export default function SearchBar({
+  id,
   placeholder,
   onChange,
   liveSearch = false,
@@ -50,6 +51,7 @@ export default function SearchBar({
       <ClearTextFieldBtn isActive={query} onClick={handleClearText} />
 
       <TextField
+        id={id}
         value={query}
         onChange={handleChange}
         placeholder={placeholder}

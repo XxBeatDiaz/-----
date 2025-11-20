@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import {
-  Drawer,
   Button,
   Box,
   Typography,
@@ -10,12 +9,16 @@ import {
   Badge,
   TextField,
   MenuItem,
+  Slide,
 } from "@mui/material";
 
 import FilterListIcon from "@mui/icons-material/FilterList";
 import CircleIcon from "@mui/icons-material/Circle";
 
-import { getLastSearch } from "../../redux/slices/search";
+import { selectLastSearch } from "../../redux/slices/search";
+import { selectGenres } from "../../redux/slices/genres";
+
+const YEARS = 1900;
 
 export default function FiltersDrawer({
   onClickApply,
@@ -25,16 +28,22 @@ export default function FiltersDrawer({
   const [open, setOpen] = useState(false);
   const [applyMark, setApplyMark] = useState(false);
 
-  const { year, genre } = useSelector(getLastSearch);
-  console.log(year, genre);
+  const genres = useSelector(selectGenres);
+  const lastSearch = useSelector(selectLastSearch);
 
-  const [selectedYear, setSelectedYear] = useState(year || "");
-  const [selectedGenre, setSelectedGenre] = useState(genre || "");
+  console.log(lastSearch);
 
-  const years = Array.from(
-    { length: currentYear - 1900 + 1 },
-    (_, year) => 1900 + year
-  ).reverse();
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
+
+  console.log(selectedGenre, selectedYear);
+
+  useEffect(() => {
+    setSelectedYear(lastSearch.year || "");
+    setSelectedGenre(lastSearch.genre || "");
+  }, [lastSearch]);
+
+  const years = getYearsList(currentYear);
 
   function handleOpenDrawer() {
     setOpen(true);
@@ -47,16 +56,15 @@ export default function FiltersDrawer({
   function handleApplyFilters() {
     handleCloseDrawer();
     setApplyMark(true);
-    onClickApply(selectedYear, selectedGenre);
+    const idOfGenre = genres?.find((g) => g.name === selectedGenre)?.id;
+    onClickApply(selectedYear, idOfGenre);
   }
 
   function handleResetFilters() {
     handleCloseDrawer();
     setApplyMark(false);
-
     setSelectedYear("");
     setSelectedGenre("");
-
     onClickReset();
   }
 
@@ -90,67 +98,105 @@ export default function FiltersDrawer({
         />
       </Badge>
 
-      <Drawer
-        anchor="top"
-        open={open}
-        onClose={handleCloseDrawer}
-        PaperProps={{
-          sx: {
-            height: "300px",
-            width: "500px",
-            mx: "auto",
-            borderRadius: "0 0 12px 12px",
-            overflow: "hidden",
-            backgroundColor: "#ffffffff",
-            boxShadow: "0 10px 700px rgba(130, 16, 16, 0.32)",
-          },
-        }}
-      >
-        <Box
-          width={470}
-          p={2}
-          role="presentation"
-          display="flex"
-          flexDirection="column"
-          gap={2}
-        >
-          <Typography variant="h6">Filters</Typography>
-
-          <Divider />
-
-          <TextField label={"genre: "} value={selectedGenre} select onChange={handleFilterGenre}>
-            <MenuItem>Action</MenuItem>
-            <MenuItem>Fantasy</MenuItem>
-          </TextField>
-
-          <TextField
-            label="Year"
-            value={selectedYear}
-            select
-            onChange={handleFilterYear}
+      {open && (
+        <>
+          <Box
+            onClick={handleCloseDrawer}
+            sx={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              bgcolor: "rgba(0,0,0,0.3)",
+              zIndex: 1200,
+            }}
           >
-            {years.map((y) => (
-              <MenuItem key={y} value={year ? year : y}>
-                {y}
-              </MenuItem>
-            ))}
-          </TextField>
+            <Slide in={open} direction="down" mountOnEnter unmountOnExit>
+              <Box
+                sx={{
+                  position: "fixed",
+                  top: 0,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: 500,
+                  height: 300,
+                  bgcolor: "white",
+                  borderRadius: "0 0 12px 12px",
+                  boxShadow: "0 10px 900px rgba(130,16,16,0.32)",
+                  zIndex: 1300,
+                  p: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 3,
+                }}
+              >
+                <Typography variant="h6">Filters</Typography>
 
-          <Divider />
+                <Divider />
 
-          <Box>
-            <Button variant="text" color="success" onClick={handleApplyFilters}>
-              Apply
-            </Button>
+                <TextField
+                  id="genre-select"
+                  label="Genre"
+                  value={selectedGenre}
+                  select
+                  onChange={handleFilterGenre}
+                >
+                  {genres.map((g) => (
+                    <MenuItem key={g.id} value={g.name}>
+                      {g.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
 
-            {applyMark ? (
-              <Button variant="text" color="error" onClick={handleResetFilters}>
-                Reset
-              </Button>
-            ) : undefined}
+                <TextField
+                  id="year-Select"
+                  label="Year"
+                  value={selectedYear}
+                  select
+                  onChange={handleFilterYear}
+                >
+                  {years.map((y) => (
+                    <MenuItem key={y} value={y}>
+                      {y}
+                    </MenuItem>
+                  ))}
+                </TextField>
+
+                <Divider />
+
+                <Box>
+                  <Button
+                    variant="text"
+                    color="success"
+                    onClick={handleApplyFilters}
+                  >
+                    Apply
+                  </Button>
+
+                  {applyMark && (
+                    <Button
+                      variant="text"
+                      color="error"
+                      onClick={handleResetFilters}
+                    >
+                      Reset
+                    </Button>
+                  )}
+                </Box>
+              </Box>
+            </Slide>
           </Box>
-        </Box>
-      </Drawer>
+        </>
+      )}
     </>
   );
+}
+
+function getYearsList(currentYear) {
+  const years = Array.from(
+    { length: currentYear - YEARS + 1 },
+    (_, year) => 1900 + year
+  ).reverse();
+  return years;
 }
