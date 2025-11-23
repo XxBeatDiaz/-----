@@ -1,4 +1,4 @@
-import { Grid, Divider, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import MovieCard from "./MovieCard.jsx";
 
@@ -15,13 +15,11 @@ export default function ListMovieCards({ movies }) {
         movies.map((movie) => (
           <Grid key={movie.id}>
             <MovieCard
-              id={movie.id}
+              movieId={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
+              year={movie.year}
             />
-            <Divider sx={{ backgroundColor: "GrayText", color: "InfoText" }}>
-              {movie.year}
-            </Divider>
           </Grid>
         ))
       ) : (
