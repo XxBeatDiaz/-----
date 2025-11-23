@@ -8,8 +8,8 @@ export function getAllMovies() {
 
 export function getMoviesByFilters(filters) {
   const { name = '', year = '', genre = '' } = filters;
-  console.log(filters);
   
+  const genreId = genre;
   let filteredMovies = movies;
 
   if (name) {
@@ -22,13 +22,12 @@ export function getMoviesByFilters(filters) {
     );
   }
 
-  if (genre) {
+  if (genreId) {
     filteredMovies = filteredMovies.filter(movie =>
-      movie.genre.toLowerCase().includes(genre.toLowerCase())
+      movie.genre_ids.includes(Number(genreId))
     );
   }
   
-
   return filteredMovies;
 }
 
