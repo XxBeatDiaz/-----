@@ -33,8 +33,6 @@ export default function FiltersDrawer({
   const genres = useSelector(selectGenres);
   const lastSearch = useSelector(selectLastSearch);
 
-  console.log(lastSearch);
-
   useEffect(() => {
     setSelectedYear(lastSearch.year || "");
     setSelectedGenre(lastSearch.genre || "");
@@ -51,6 +49,8 @@ export default function FiltersDrawer({
   }
 
   function handleApplyFilters() {
+    if (!selectedYear && !selectedGenre) return;
+
     handleCloseDrawer();
     setApplyMark(true);
     onClickApply(selectedYear, selectedGenre);
@@ -97,6 +97,7 @@ export default function FiltersDrawer({
       {open && (
         <>
           <Box
+            onClick={handleCloseDrawer}
             sx={{
               position: "fixed",
               top: 0,
@@ -109,13 +110,13 @@ export default function FiltersDrawer({
           >
             <Slide in={open} direction="down" mountOnEnter unmountOnExit>
               <Box
+                onClick={(e) => e.stopPropagation()}
                 sx={{
                   position: "fixed",
                   top: 0,
-                  left: "50%",
+                  left: "40%",
+                  width: "20%",
                   transform: "translateX(-50%)",
-                  width: 500,
-                  height: 300,
                   bgcolor: "white",
                   borderRadius: "0 0 12px 12px",
                   boxShadow: "0 10px 900px rgba(130,16,16,0.32)",
@@ -124,6 +125,7 @@ export default function FiltersDrawer({
                   display: "flex",
                   flexDirection: "column",
                   gap: 3,
+                  overflowY: "auto",
                 }}
               >
                 <Typography variant="h6">Filters</Typography>
