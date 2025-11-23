@@ -27,16 +27,13 @@ export default function FiltersDrawer({
 }) {
   const [open, setOpen] = useState(false);
   const [applyMark, setApplyMark] = useState(false);
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   const genres = useSelector(selectGenres);
   const lastSearch = useSelector(selectLastSearch);
 
   console.log(lastSearch);
-
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("");
-
-  console.log(selectedGenre, selectedYear);
 
   useEffect(() => {
     setSelectedYear(lastSearch.year || "");
@@ -56,8 +53,7 @@ export default function FiltersDrawer({
   function handleApplyFilters() {
     handleCloseDrawer();
     setApplyMark(true);
-    const idOfGenre = genres?.find((g) => g.name === selectedGenre)?.id;
-    onClickApply(selectedYear, idOfGenre);
+    onClickApply(selectedYear, selectedGenre);
   }
 
   function handleResetFilters() {
@@ -101,7 +97,6 @@ export default function FiltersDrawer({
       {open && (
         <>
           <Box
-            onClick={handleCloseDrawer}
             sx={{
               position: "fixed",
               top: 0,
@@ -136,21 +131,21 @@ export default function FiltersDrawer({
                 <Divider />
 
                 <TextField
-                  id="genre-select"
+                  id={`genre-select/${selectedGenre}`}
                   label="Genre"
                   value={selectedGenre}
                   select
                   onChange={handleFilterGenre}
                 >
                   {genres.map((g) => (
-                    <MenuItem key={g.id} value={g.name}>
+                    <MenuItem key={g.id} value={g.id}>
                       {g.name}
                     </MenuItem>
                   ))}
                 </TextField>
 
                 <TextField
-                  id="year-Select"
+                  id={`year-Select/${selectedYear}`}
                   label="Year"
                   value={selectedYear}
                   select

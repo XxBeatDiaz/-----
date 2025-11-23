@@ -28,8 +28,8 @@ export const fetchManyMovies = createAsyncThunk(
 
 export const fetchMoviesByFilters = createAsyncThunk(
     "movies/fetchByFilters",
-    async ({ name = '', year = '', genres = '' }) => {
-        const movies = await getMoviesByFilters(name, year, genres);
+    async ({ name = '', year = '', genre = '' }) => {        
+        const movies = await getMoviesByFilters(name, year, genre);
         return movies;
     }
 );

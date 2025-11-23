@@ -26,7 +26,7 @@ export default function SearchControler() {
 
   function handleFiltersDrawer(year, genre) {
     if (!year && !genre) return;
-    handleAllFilters({ ...lastSearch, year: year, genre: genre });
+    handleAllFilters({ ...lastSearch, name: '', year: year, genre: genre });
   }
 
   function handleResetFilters() {
