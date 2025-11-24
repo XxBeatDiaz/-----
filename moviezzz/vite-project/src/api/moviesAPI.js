@@ -1,6 +1,7 @@
 import { fetchAction } from './utilsAPI.js';
+import { endPoints } from '../globals.js';
 
-const API_URL = 'http://localhost:3000/movies';
+const API_URL = endPoints.moviesUrl;
 
 export async function getMovies() {
     return await fetchAction(`${API_URL}`);

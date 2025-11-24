@@ -6,8 +6,9 @@ const alertSlice = createSlice({
   reducers: {
     showAlert: (state, action) => {
       state.message = action.payload.message;
-      state.type = action.payload.type;    
+      state.type = action.payload.type;
     },
+
     clearAlert: (state) => {
       state.message = null;
       state.type = null;

@@ -18,7 +18,6 @@ import { filterItems } from "../api/utils.js";
 export default function MyFavorites() {
   const userStatus = useSelector(selectUserStatus);
   const moviesIds = useSelector(selectMoviesIdsFromUser);
-  // const moviesByIds = useSelector(selectManyByIds(moviesIds));
 
   const selectMoviesByIds = useMemo(
     () => selectManyByIds(moviesIds),
