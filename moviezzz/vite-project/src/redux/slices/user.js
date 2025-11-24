@@ -1,6 +1,6 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 
-import { fetchUser } from '../thunks/userThunks';
+import { deleteFavoriteMovie, fetchUser, putFavoriteMovie } from '../thunks/userThunks';
 
 const userSlice = createSlice({
     name: 'user',
@@ -29,10 +29,35 @@ const userSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message;
             })
+
+            .addCase(putFavoriteMovie.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(putFavoriteMovie.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.user.moviesIds = action.payload;
+            })
+            .addCase(putFavoriteMovie.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
+
+            .addCase(deleteFavoriteMovie.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(deleteFavoriteMovie.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.user.moviesIds = action.payload;
+            })
+            .addCase(deleteFavoriteMovie.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
     }
 });
 
 export const selectUser = (state) => state.user.user;
+export const selectUserId = (state) => state.user.user.id;
 export const selectUserStatus = (state) => state.user.status;
 export const selectUserError = (state) => state.user.error;
 

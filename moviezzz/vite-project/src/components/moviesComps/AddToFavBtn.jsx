@@ -9,22 +9,15 @@ export default function AddToFavBtn({
   initialFilled,
 }) {
   const [filled, setFilled] = useState(initialFilled);
-
-  function handleClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
   
   function handleAdd(event) {
-    handleClick(event);
     setFilled(true);
-    onAddClick();
+    onAddClick(event);
   }
 
   function handleRemove(event) {
-    handleClick(event);
     setFilled(false);
-    onRemoveClick();
+    onRemoveClick(event);
   }
 
   return (

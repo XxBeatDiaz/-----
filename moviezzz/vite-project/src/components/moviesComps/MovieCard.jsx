@@ -10,28 +10,61 @@ import { showAlert } from "../../redux/slices/alert";
 import {
   selectUserStatus,
   selectMoviesIdsFromUser,
+  selectUser,
 } from "../../redux/slices/user";
+
+import {
+  putFavoriteMovie,
+  deleteFavoriteMovie,
+} from "../../redux/thunks/userThunks";
 
 export default function MovieCard({ movieId, title, poster_path, year }) {
   const dispatch = useDispatch();
 
   const userStatus = useSelector(selectUserStatus);
+  const user = useSelector(selectUser);
+
+  const userId = user?.id;
   const moviesIds = useSelector(selectMoviesIdsFromUser);
 
   const isFavorite = moviesIds.includes(Number(movieId));
 
-  function handleAddFavorite() {
-    // dispatch();
-    dispatch(
-      showAlert({ type: "success", message: "Movie added successfully" })
-    );
+  async function handleAddFavorite(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      await dispatch(putFavoriteMovie({ userId, movieId })).unwrap();
+      dispatch(
+        showAlert({ type: "success", message: "Movie added successfully" })
+      );
+    } catch (error) {
+      dispatch(
+        showAlert({
+          type: "error",
+          message: `Failed to add movie. <${error.message}>`,
+        })
+      );
+    }
   }
 
-  function handleRemoveFavorite() {
-    // dispatch();
-    dispatch(
-      showAlert({ type: "success", message: "Movie removed successfully" })
-    );
+  async function handleRemoveFavorite(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      await dispatch(deleteFavoriteMovie({ userId, movieId })).unwrap();
+      dispatch(
+        showAlert({ type: "success", message: "Movie removed successfully" })
+      );
+    } catch (error) {
+      dispatch(
+        showAlert({
+          type: "error",
+          message: `Failed to remove movie. <${error.message}>`,
+        })
+      );
+    }
   }
 
   return (
