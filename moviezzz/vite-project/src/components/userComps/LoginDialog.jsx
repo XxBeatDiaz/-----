@@ -40,13 +40,6 @@ export default function LoginDialog() {
     const formJson = Object.fromEntries(formData.entries());
     const { username, password } = formJson;
 
-    if (!username || !password) {
-      dispatch(
-        showAlert({ type: "error", message: "Please fill in all fields!" })
-      );
-      return;
-    }
-
     try {
       await dispatch(fetchUser({ username, password })).unwrap();
       dispatch(

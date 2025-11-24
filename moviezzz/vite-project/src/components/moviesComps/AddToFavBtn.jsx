@@ -3,13 +3,28 @@ import { useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-export default function AddToFavBtn({ onClick, initialFilled }) {
+export default function AddToFavBtn({
+  onAddClick,
+  onRemoveClick,
+  initialFilled,
+}) {
   const [filled, setFilled] = useState(initialFilled);
 
-  function handleClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    setFilled(!filled);
+  function handleClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  
+  function handleAdd(event) {
+    handleClick(event);
+    setFilled(true);
+    onAddClick();
+  }
+
+  function handleRemove(event) {
+    handleClick(event);
+    setFilled(false);
+    onRemoveClick();
   }
 
   return (
@@ -24,14 +39,14 @@ export default function AddToFavBtn({ onClick, initialFilled }) {
       >
         {filled ? (
           <FavoriteIcon
-            onClick={handleClick}
+            onClick={handleRemove}
             sx={{
               fontSize: 20,
               fill: "currentColor",
             }}
           />
         ) : (
-          <FavoriteBorderIcon onClick={handleClick} sx={{fontSize: 20,}}/>
+          <FavoriteBorderIcon onClick={handleAdd} sx={{ fontSize: 20 }} />
         )}
       </span>
     </>

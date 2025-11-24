@@ -1,21 +1,38 @@
 import { Link } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+
+import AddToFavBtn from "./AddToFavBtn";
+
+import { showAlert } from "../../redux/slices/alert";
 
 import {
   selectUserStatus,
   selectMoviesIdsFromUser,
 } from "../../redux/slices/user";
 
-import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
-
-import AddToFavBtn from "./AddToFavBtn";
-
 export default function MovieCard({ movieId, title, poster_path, year }) {
+  const dispatch = useDispatch();
+
   const userStatus = useSelector(selectUserStatus);
   const moviesIds = useSelector(selectMoviesIdsFromUser);
 
   const isFavorite = moviesIds.includes(Number(movieId));
-  console.log(moviesIds, isFavorite, movieId);
+
+  function handleAddFavorite() {
+    // dispatch();
+    dispatch(
+      showAlert({ type: "success", message: "Movie added successfully" })
+    );
+  }
+
+  function handleRemoveFavorite() {
+    // dispatch();
+    dispatch(
+      showAlert({ type: "success", message: "Movie removed successfully" })
+    );
+  }
 
   return (
     <Link to={`/movie/${movieId}`} style={{ textDecoration: "none" }}>
@@ -41,22 +58,18 @@ export default function MovieCard({ movieId, title, poster_path, year }) {
             image={poster_path}
             alt={title}
           />
+
           <CardContent
             sx={{
-              /* Scrollbar Styling */
               "&::-webkit-scrollbar": {
-                width: "6px", // עובי אנכי
-              },
-              "&::-webkit-scrollbar-track": {
-                backgroundColor: "transparent", // רקע המסילה
-                borderRadius: "10px",
+                width: "5px",
               },
               "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "#ffffff40", // צבע ה-thumb
-                borderRadius: "10px",
+                backgroundColor: "#ffacac3d",
+                borderRadius: "2px",
               },
               "&::-webkit-scrollbar-thumb:hover": {
-                backgroundColor: "#ffffff80", // צבע ב-hover
+                backgroundColor: "#ffffff80",
               },
 
               overflowY: "auto",
@@ -77,10 +90,12 @@ export default function MovieCard({ movieId, title, poster_path, year }) {
               justifyContent={"space-between"}
             >
               {userStatus === "succeeded" ? (
-                <AddToFavBtn initialFilled={isFavorite} />
-              ) : (
-                ""
-              )}
+                <AddToFavBtn
+                  initialFilled={isFavorite}
+                  onAddClick={handleAddFavorite}
+                  onRemoveClick={handleRemoveFavorite}
+                />
+              ) : null}
 
               <Typography
                 sx={{

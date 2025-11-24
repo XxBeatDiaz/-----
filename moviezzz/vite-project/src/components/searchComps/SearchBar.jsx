@@ -20,8 +20,8 @@ export default function SearchBar({
     }
   };
 
-  const handleChange = (e) => {
-    const value = e.target.value;
+  const handleChange = (event) => {
+    const value = event.target.value;
     setQuery(value);
 
     if (liveSearch) {
@@ -34,7 +34,7 @@ export default function SearchBar({
     if (liveSearch) onChange("");
   }
 
-    function handleSearchClick() {
+  function handleSearchClick() {
     if (!liveSearch) {
       onChange(query);
       setQuery("");
@@ -75,10 +75,7 @@ export default function SearchBar({
           },
         }}
       />
-      <SearchBtn
-        isActive={query}
-        onClick={handleSearchClick}
-      />
+      {!liveSearch && <SearchBtn isActive={query} onClick={handleSearchClick} />}
     </Stack>
   );
 }

@@ -7,12 +7,6 @@ export async function login(username = '', password = '') {
 
     if (username) params.append('username', username);
     if (password) params.append('password', password);
-
-    const resu = await fetchAction(`${API_URL}${params.toString()}`);
     
-    return resu;
-}
-
-export async function logout() {
-    //logout
+    return await fetchAction(`${API_URL}${params.toString()}`);
 }

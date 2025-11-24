@@ -10,11 +10,12 @@ import { selectUser } from "../redux/slices/user";
 import { logo, links } from "../globals";
 
 export default function Layout({ children }) {
-  
   const user = useSelector(selectUser);
+
   const avatar = null; //לממש בהמשך
 
   const isLogedin = !!user;
+  
   let loginSection = <LoginDialog />;
 
   if (isLogedin) {
