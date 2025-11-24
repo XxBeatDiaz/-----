@@ -94,7 +94,7 @@
     "title": "Mad Max: Fury Road",
     "synopsis": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the help of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
     "director": "George Miller",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/Mad_Max_poster.jpg",
     "year": 2015,
     "genre_ids": [1, 5, 12]
   },
@@ -103,7 +103,7 @@
     "title": "Gladiator",
     "synopsis": "A former Roman general sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
     "director": "Ridley Scott",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/Gladiator_poster.jpg",
     "year": 2000,
     "genre_ids": [1, 3, 12, 17]
   },
@@ -112,7 +112,7 @@
     "title": "The Conjuring",
     "synopsis": "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.",
     "director": "James Wan",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/The_Conjuring_poster.jpg",
     "year": 2013,
     "genre_ids": [4, 11, 15]
   },
@@ -121,7 +121,7 @@
     "title": "Get Out",
     "synopsis": "A young African-American man visits his white girlfriend's family estate, where he becomes ensnared in a more sinister real reason for the invitation.",
     "director": "Jordan Peele",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/Get_Out_poster.jpg",
     "year": 2017,
     "genre_ids": [4, 11]
   },
@@ -130,7 +130,7 @@
     "title": "A Nightmare on Elm Street",
     "synopsis": "A group of teenagers is terrorized in their dreams by Freddy Krueger, a disfigured midnight mangler who preys on the teenagers in their dreams.",
     "director": "Wes Craven",
-    "poster_path": "/The_Matrix.png",
+    "poster_path": "/A_Nightmare_on_Elm_Street_poster.jpg",
     "year": 1984,
     "genre_ids": [4, 15]
   },
@@ -139,7 +139,7 @@
     "title": "The Lion King",
     "synopsis": "Lion prince Simba flees his kingdom after the death of his father, but returns as an adult to reclaim his throne.",
     "director": "Roger Allers, Rob Minkoff",
-    "poster_path": "/The_Lion_King.png",
+    "poster_path": "/The_Lion_King_poster.jpg",
     "year": 1994,
     "genre_ids": [9, 3, 16, 12, 21]
   },
