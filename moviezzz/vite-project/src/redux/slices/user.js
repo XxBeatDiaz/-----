@@ -7,13 +7,19 @@ const userSlice = createSlice({
     initialState: {
         user: null,
         status: "idle",
-        error: null
+        error: null,
+
+        addFavStatus: "idle",
+        removeFavStatus: "idle",
     },
     reducers: {
         logOut: (state) => {
             state.user = null;
             state.status = 'idle';
             state.error = null;
+
+            state.addFavStatus = "idle";
+            state.removeFavStatus = "idle";
         }
     },
     extraReducers: (builder) => {
@@ -31,26 +37,26 @@ const userSlice = createSlice({
             })
 
             .addCase(putFavoriteMovie.pending, (state) => {
-                state.status = 'loading';
+                state.addFavStatus = 'loading';
             })
             .addCase(putFavoriteMovie.fulfilled, (state, action) => {
-                state.status = 'succeeded';
+                state.addFavStatus = 'succeeded';
                 state.user.moviesIds = action.payload;
             })
             .addCase(putFavoriteMovie.rejected, (state, action) => {
-                state.status = 'failed';
+                state.addFavStatus = 'failed';
                 state.error = action.error.message;
             })
 
             .addCase(deleteFavoriteMovie.pending, (state) => {
-                state.status = 'loading';
+                state.removeFavStatus = 'loading';
             })
             .addCase(deleteFavoriteMovie.fulfilled, (state, action) => {
-                state.status = 'succeeded';
+                state.removeFavStatus = 'succeeded';
                 state.user.moviesIds = action.payload;
             })
             .addCase(deleteFavoriteMovie.rejected, (state, action) => {
-                state.status = 'failed';
+                state.addFavStatus = 'failed';
                 state.error = action.error.message;
             })
     }

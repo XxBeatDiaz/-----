@@ -148,6 +148,7 @@
     "title": "Toy Story",
     "synopsis": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
     "director": "/John Lasseter",
+    "poster_path": "/Toy_Story_poster.jpg",
     "year": 1995,
     "genre_ids": [9, 2, 12, 13, 21]
   },
@@ -156,6 +157,7 @@
     "title": "Finding Nemo",
     "synopsis": "A clownfish named Marlin embarks on a journey to find his son, Nemo, who has been captured by a diver.",
     "director": "/Andrew Stanton",
+    "poster_path": "/Finding_Nemo_poster.jpg",
     "year": 2003,
     "genre_ids": [9, 2, 12, 21]
   },
@@ -164,6 +166,7 @@
     "title": "The Notebook",
     "synopsis": "A poor yet passionate young man falls in love with a rich young woman and gives her a sense of freedom, but they are soon separated by their social differences.",
     "director": "/Nick Cassavetes",
+    "poster_path": "/The_Notebook_poster.jpg",
     "year": 2004,
     "genre_ids": [6, 3]
   },
@@ -181,6 +184,7 @@
     "title": "Pride and Prejudice",
     "synopsis": "Sparks fly when spirited Elizabeth Bennet meets single, rich, and proud Mr. Darcy.",
     "director": "Joe Wright",
+    "poster_path": "/Pride_And_Prejudice_poster.jpg",
     "year": 2005,
     "genre_ids": [6, 3]
   },
@@ -189,6 +193,7 @@
     "title": "The Avengers",
     "synopsis": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
     "director": "Joss Whedon",
+    "poster_path": "/The_Avengers_poster.jpg",
     "year": 2012,
     "genre_ids": [1, 8, 5]
   },
@@ -197,6 +202,7 @@
     "title": "Spider-Man: No Way Home",
     "synopsis": "Peter Parker navigates the multiverse and faces off against villains from other dimensions.",
     "director": "Jon Watts",
+    "poster_path": "/Spider-man_No_Way_Home_poster.jpg",
     "year": 2021,
     "genre_ids": [1, 8, 5, 13]
   },
@@ -205,6 +211,7 @@
     "title": "Black Panther",
     "synopsis": "T'Challa returns home to the isolated, technologically advanced African nation of Wakanda to be crowned king after the death of his father.",
     "director": "Ryan Coogler",
+    "poster_path": "/Black_Panter_poster.jpg",
     "year": 2018,
     "genre_ids": [1, 8, 5]
   },
@@ -213,6 +220,7 @@
     "title": "The Grand Budapest Hotel",
     "synopsis": "In the 1930s, a legendary concierge at a famous European hotel and his protégé get caught up in the theft of a priceless Renaissance painting and the battle for an enormous family fortune.",
     "director": "Wes Anderson",
+    "poster_path": "/The_Grand_Budapest_Hotel_poster.jpg",
     "year": 2014,
     "genre_ids": [2, 12, 3, 7, 18]
   },
@@ -221,6 +229,7 @@
     "title": "Superbad",
     "synopsis": "Two high school friends navigate a series of misadventures while trying to make the most of their last days before graduation.",
     "director": "Greg Mottola",
+    "poster_path": "/Super_Bad_poster.jpg",
     "year": 2007,
     "genre_ids": [2]
   },
@@ -229,6 +238,7 @@
     "title": "The Hangover",
     "synopsis": "Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing.",
     "director": "Todd Phillips",
+    "poster_path": "/The_Hangover_poster.jpg",
     "year": 2009,
     "genre_ids": [2]
   },
@@ -237,6 +247,7 @@
     "title": "The Social Network",
     "synopsis": "As Harvard students create the social networking site that would become Facebook, they must deal with the fallout from their success.",
     "director": "David Fincher",
+    "poster_path": "/The_Social_Network_poster.jpg",
     "year": 2010,
     "genre_ids": [3, 10]
   },
@@ -245,6 +256,7 @@
     "title": "Bohemian Rhapsody",
     "synopsis": "The story of the legendary rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid in 1985.",
     "director": "Bryan Singer",
+    "poster_path": "/Bohemian_Rhapsody_poster.jpg",
     "year": 2018,
     "genre_ids": [10, 3, 14, 16]
   },
@@ -253,6 +265,7 @@
     "title": "The Imitation Game",
     "synopsis": "During World War II, the English mathematical genius Alan Turing tries to crack the German Enigma code with help from fellow mathematicians.",
     "director": "Morten Tyldum",
+    "poster_path": "/The_Imitation_Game_poster.jpg",
     "year": 2014,
     "genre_ids": [10, 3, 11, 17, 20]
   }
